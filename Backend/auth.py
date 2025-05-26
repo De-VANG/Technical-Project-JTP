@@ -10,6 +10,7 @@ import pickle
 import os
 import numpy as np
 import pandas as pd
+import requests
 
 
 
@@ -88,6 +89,7 @@ def recommend(game):
 
 
 
+
 # User Signup
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -133,7 +135,7 @@ def profile(current_user):
     username = current_user['username']
     user_data = users_collection.find_one({'username': username})
 
-    past_recommendations = user_data.get('recommendations', [])
+    past_recommendations = user_data.get('past_recommendations', [])
     game_ratings = user_data.get('ratings', [])
 
     return jsonify({
@@ -142,6 +144,20 @@ def profile(current_user):
         'past_recommendations': past_recommendations,
         'message': 'Welcome to your profile!'
     })
+
+@app.route('/home', methods=['GET'])
+@token_required
+def home(current_user):
+    return jsonify({
+        "message": f"Welcome back, {current_user['username']}! Ready to discover your next favorite game?"
+    }), 200
+
+
+@app.route('/games', methods=['GET'])
+@token_required
+def get_all_games(current_user):
+    all_games = list(new_df['title'].dropna().unique())
+    return jsonify({'games': all_games}), 200
 
 
 
@@ -162,7 +178,7 @@ def recommend_route(current_user):
 
     users_collection.update_one(
         {"username": current_user['username']},
-        {"$push": {"recommendations": {"base_game": game, "recommended": recommended_games}}},
+        {"$push": {"past_recommendations": {"base_game": game, "recommended": recommended_games}}},
         upsert=True
     )
 
@@ -176,8 +192,10 @@ def recommend_route(current_user):
 @app.route('/user/recommendations', methods=['GET'])
 @token_required
 def get_user_recommendations(current_user):
-    user_recommendations = current_user.get('recommendations', [])
-    return jsonify({"recommendations": user_recommendations}), 200
+    user_data = users_collection.find_one({'username': current_user['username']})
+    recommendations = user_data.get('past_recommendations', [])
+    return jsonify({'recommendations': recommendations}), 200
+
 
 
 # Rating API

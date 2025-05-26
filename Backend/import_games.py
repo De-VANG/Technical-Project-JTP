@@ -11,7 +11,7 @@ CSV_PATH = os.path.normpath(CSV_PATH)
 df = pd.read_csv(CSV_PATH)
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://mongo:27017/")
 db = client["game_recommendation"]
 collection = db["games"]
 

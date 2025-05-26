@@ -73,7 +73,7 @@ def recommend(game):
 
     game_index = new_df[new_df['title'] == game].index[0]
     distances = similarity[game_index]
-    game_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+    game_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:9]
 
     recommended_games = []
     for i in game_list:

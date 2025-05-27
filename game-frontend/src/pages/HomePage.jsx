@@ -18,7 +18,7 @@ const HomePage = () => {
 
   const fetchInitialRecommendations = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/user/recommendations', {
+      const response = await axios.get('http://127.0.0.1:5001/user/recommendations', {
         headers: {
           'x-access-token': token,
         },
@@ -38,7 +38,7 @@ const HomePage = () => {
 
   const fetchGameList = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/games', {
+      const response = await axios.get('http://127.0.0.1:5001/games', {
         headers: {
           'x-access-token': token,
         },
@@ -73,7 +73,7 @@ const HomePage = () => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:5000/choose_game',
+        'http://127.0.0.1:5001/choose_game',
         { game: selectedGame },
         {
           headers: {
@@ -96,7 +96,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-gray-900 to-black text-white px-6 py-8">
+    <div className="min-h-screen w-screen bg-gradient-to-r from-gray-900 to-black text-white px-6 py-8">
       <Navbar />
       <h2 className="text-5xl py-4 font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-200 drop-shadow-lg">
         Get New Recommendations

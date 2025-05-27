@@ -78,7 +78,7 @@ const RateAndFav = () => {
 
       for (const [game, rating] of Object.entries(ratings)) {
         console.log('Submitting rating:', { game, rating });
-        await fetch('http://127.0.0.1:5000/rate', {
+        await fetch('http://127.0.0.1:5001/rate', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const RateAndFav = () => {
         });
       }
 
-      const res = await fetch('http://127.0.0.1:5000/choose_game', {
+      const res = await fetch('http://127.0.0.1:5001/choose_game', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

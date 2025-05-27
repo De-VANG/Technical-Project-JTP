@@ -14,7 +14,7 @@ const ProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await fetch('http://127.0.0.1:5000/profile', {
+        const res = await fetch('http://127.0.0.1:5001/profile', {
           headers: { 'x-access-token': token }
         });
 

@@ -19,7 +19,7 @@ export default function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://127.0.0.1:5000/login', { username, password });
+      const res = await axios.post('http://127.0.0.1:5001/login', { username, password });
       localStorage.setItem('token', res.data.token);
       alert(res.data.message);
       navigate('/home', { replace: true });

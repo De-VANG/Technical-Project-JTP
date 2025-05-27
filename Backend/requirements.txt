@@ -1,8 +1,10 @@
 Flask
+flask-cors
 scikit-learn
 numpy
 pandas
+bcrypt
 matplotlib
 pymongo
 PyJWT
-datetime
+requests

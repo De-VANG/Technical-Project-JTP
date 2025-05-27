@@ -97,7 +97,7 @@ pip install -r requirements.txt
 3. **Set up Frontend**
 
 ```
-cd ../game_frontend
+cd ../game-frontend
 npm install
 ```
 
@@ -117,7 +117,7 @@ python auth.py
 ```
 In another terminal, start the React frontend:
 ```
-cd game_frontend
+cd game-frontend
 npm run dev
 ```
 

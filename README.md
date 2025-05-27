@@ -149,8 +149,8 @@ In the above user flow diagram, The user journey begins on a simple and clean la
 ## 📬 Contact
 
 Devang Bhatnagar
-GitHub: https://github.com/De-VANG
-LinkedIn: https://www.linkedin.com/in/devang-bhatnagar/
-Email: devangbhatnagar12@gmail.com
+1. GitHub: https://github.com/De-VANG
+2. LinkedIn: https://www.linkedin.com/in/devang-bhatnagar/
+3. Email: devangbhatnagar12@gmail.com
 
 

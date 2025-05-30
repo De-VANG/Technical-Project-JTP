@@ -1,11 +1,15 @@
 
-// src/pages/HomePage.jsx
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';  
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
+
+
+import Navbar from '../components/Navbar';
 import { motion } from 'framer-motion';
 
+
 const HomePage = () => {
+
+
   const [recommendations, setRecommendations] = useState([]);
   const [gameList, setGameList] = useState([]);
   const [filteredGames, setFilteredGames] = useState([]);
@@ -17,6 +21,7 @@ const HomePage = () => {
   const token = localStorage.getItem('token');
 
   const fetchInitialRecommendations = async () => {
+
     try {
       const response = await axios.get('http://127.0.0.1:5001/user/recommendations', {
         headers: {
@@ -30,13 +35,14 @@ const HomePage = () => {
 
       setRecommendations(recs);
     } catch (err) {
-      setMessage('No previous recommendations found. Try selecting a game.');
+      setMessage('No previous recommendations is found in the Database. Try selecting a new game.');
     } finally {
       setLoading(false);
     }
   };
 
   const fetchGameList = async () => {
+
     try {
       const response = await axios.get('http://127.0.0.1:5001/games', {
         headers: {
@@ -45,7 +51,7 @@ const HomePage = () => {
       });
       setGameList(response.data.games);
     } catch (error) {
-      console.error('Failed to fetch games list:', error);
+      console.error('Unable to fetch the games list:', error);
     }
   };
 
@@ -67,13 +73,12 @@ const HomePage = () => {
 
   const getNewRecommendations = async () => {
     if (!selectedGame) {
-      setMessage('Please select a valid game');
+      setMessage('Please select a valid game from the list');
       return;
     }
 
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:5001/choose_game',
+      const response = await axios.post('http://127.0.0.1:5001/choose_game',
         { game: selectedGame },
         {
           headers: {
@@ -81,16 +86,15 @@ const HomePage = () => {
           },
         }
       );
-
       setRecommendations(response.data.recommended);
-      // setMessage(`Recommendations based on: ${selectedGame}`);
+      setMessage('');
     } catch (err) {
       console.error(err);
-      setMessage('Failed to get recommendations. Try a different game.');
+      setMessage('Failed to get recommendations. Try a different game from the list.');
     }
   };
-
   useEffect(() => {
+    
     fetchInitialRecommendations();
     fetchGameList();
   }, []);
@@ -126,6 +130,7 @@ const HomePage = () => {
             ))}
           </ul>
         )}
+        
         <button
           onClick={getNewRecommendations}
           onMouseEnter={(e) => {

@@ -48,18 +48,18 @@ def token_required(f):
         print("Received token:", token)  # Debugging
 
         if not token:
-            return jsonify({'message': 'Token is missing!'}), 401
+            return jsonify({'message': 'The Token is missing!'}), 401
 
         try:
             data = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
             print("Decoded data:", data)  # Debugging
             current_user = users_collection.find_one({'username': data['username']})
             if not current_user:
-                return jsonify({'message': 'User not found!'}), 401
+                return jsonify({'message': 'The user is not found!'}), 401
         except jwt.ExpiredSignatureError:
-            return jsonify({'message': 'Token expired!'}), 401
+            return jsonify({'message': 'Your token has expired!'}), 401
         except jwt.InvalidTokenError:
-            return jsonify({'message': 'Token is invalid!'}), 401
+            return jsonify({'message': 'Your token is not valid!'}), 401
 
         return f(current_user, *args, **kwargs)
     return decorated
@@ -98,11 +98,11 @@ def signup():
     password = data.get('password')
 
     if users_collection.find_one({'username': username}):
-        return jsonify({'message': 'User already exists'}), 400
+        return jsonify({'message': 'This user already exist'}), 400
 
     hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
     users_collection.insert_one({'username': username, 'password': hashed_pw})
-    return jsonify({'message': 'User registered successfully'}), 201
+    return jsonify({'message': 'The user has registered successfully'}), 201
 
 
 # User Login
@@ -114,7 +114,7 @@ def login():
 
     user = users_collection.find_one({'username': username})
     if not user or not bcrypt.checkpw(password.encode('utf-8'), user['password']):
-        return jsonify({'message': 'Invalid credentials'}), 401
+        return jsonify({'message': 'Your credentials are invalid'}), 401
 
     token = jwt.encode({
         'username': username,
@@ -125,7 +125,7 @@ def login():
     if isinstance(token, bytes):
         token = token.decode('utf-8')
 
-    return jsonify({'message': 'Login successful', 'token': token}), 200
+    return jsonify({'message': 'You have logged in successful', 'token': token}), 200
 
 
 # Protected Profile Route
@@ -142,14 +142,14 @@ def profile(current_user):
         'username': username,
         'ratings': game_ratings,
         'past_recommendations': past_recommendations,
-        'message': 'Welcome to your profile!'
+        'message': 'Hey!! Welcome to your profile!'
     })
 
 @app.route('/home', methods=['GET'])
 @token_required
 def home(current_user):
     return jsonify({
-        "message": f"Welcome back, {current_user['username']}! Ready to discover your next favorite game?"
+        "message": f"Welcome back, {current_user['username']}! Are you ready to discover your next favorite game?"
     }), 200
 
 
@@ -174,7 +174,7 @@ def recommend_route(current_user):
 
     recommended_games = recommend(game)
     if not recommended_games:
-        return jsonify({"message": "Game not found"}), 404
+        return jsonify({"message": "Game not found in our database"}), 404
 
     users_collection.update_one(
         {"username": current_user['username']},
@@ -207,7 +207,7 @@ def rate_game(current_user):
     rating = data.get("rating")
 
     if not game or rating is None:
-        return jsonify({"message": "Game and rating are required"}), 400
+        return jsonify({"message": "Game and ratings are required"}), 400
 
     users_collection.update_one(
         {"username": current_user['username']},
@@ -215,7 +215,7 @@ def rate_game(current_user):
         upsert=True
     )
 
-    return jsonify({"message": f"Rating for {game} saved."}), 200
+    return jsonify({"message": f"Your rating for {game} is saved."}), 200
 
 
 # Choose Game API
@@ -230,7 +230,7 @@ def choose_game(current_user):
 
     recommended_games = recommend(game)
     if not recommended_games:
-        return jsonify({"message": "Game not found or no recommendations available"}), 404
+        return jsonify({"message": "Game is not found or no recommendations available"}), 404
 
     # Store the recommendations in user's document
     users_collection.update_one(

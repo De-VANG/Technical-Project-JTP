@@ -65,50 +65,122 @@ Welcome to GameMatch, a personalized video game recommendation web application t
 Make sure you have the following installed on your system:
 
 - [Python 3.10+](https://www.python.org/downloads/)
-- [Node.js (v18+)](https://nodejs.org/)
-- [npm](https://www.npmjs.com/)
+- [Node.js (v18+)](https://nodejs.org/en/download)
 - [Docker](https://www.docker.com/)
-- [Git](https://git-scm.com/)
+- [Git](https://git-scm.com/downloads)
 
 ### 🔧 Environment Tools
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
 
 
 ---
 
-## 🛠️ Installation
+# 🛠️ Installation
+
+## With Docker 🐳
+
+1. **Clone the Repository**
+
+Open New Empty folder in VSCode and type the following command in the VSCode Terminal.
+
+```
+git clone https://github.com/De-VANG/Technical-Project-JTP.git
+```
+
+2. **Navigate Project Directory**
+
+```
+cd Technical-Project-JTP
+```
+
+3. **Run Docker Compose**
+
+Now, Open the 'Docker Desktop' in the background, then come back to the VSCode terminal and write the following command:
+
+```
+docker-compose up --build
+```
+
+4. **Access the website**
+
+<p>Wait for couple of minutes, then open the Docker Desktop or click 'v' in the terminal. You can access the app through Docker Desktop or by entering the address in the web browser.</p>
+
+- Backend: http://localhost:5001
+- Frontend: http://localhost:5173
+
+5. **Close The Application**
+
+To close the application, press 'Ctrl + C' in the terminal and run the following command to fully close the runing Docker Container.
+```
+docker-compose down
+```
+
+---
+
+## Without Docker
 
 1. **Clone the Repository**
 
 ```
 git clone https://github.com/De-VANG/Technical-Project-JTP.git
+
+```
+
+2. **Navigate Project Directory**
+
+```
 cd Technical-Project-JTP
 ```
 
-2. **Set up Backend**
+3. **Install Dependencies for Backend**
+
+Change the directory to the Backend Folder
 
 ```
 cd Backend
+```
+Now, Install the Dependencies.
+```
 pip install -r requirements.txt
 ```
 
-3. **Set up Frontend**
+3. **Load Dataset into MongoDB**
 
+Install MongoDB by following each instructions from [here](https://www.mongodb.com/docs/manual/administration/install-community/). <br></br>
+- Open the MongoDB Compass and Connect the Network(You might see network named 'localhost:27017'). 
+- Comeback in VSCode, Open the file Technical-Project-JTP/Backend/import_games.py.
 ```
-cd ../game-frontend
-npm install
-```
+#Replace the line 14
 
-4. **Load Dataset into MongoDB**
+client = MongoClient("mongodb://mongo:27017/")
 
+#with
+
+client = MongoClient("mongodb://localhost:27017/")
+
+#Save the file.
 ```
-cd ../Backend
+- After that run the following command in the terminal. Make sure you are in the Backend directory if not then change the directory.
+```
+cd /Backend
+```
+```
 python import_games.py
 ```
 
-5. **Run Locally Without Docker**
+4. **Install Dependencies for Frontend**
+
+Change the directory to the game-frontend folder and then install the dependencies. Make sure you have already installed the [node.js](https://nodejs.org/en/download)
+
+```
+cd /game-frontend 
+npm install
+```
+
+5. **Run the Application**
 
 In one terminal, start the Flask backend:
 ```
@@ -120,16 +192,21 @@ In another terminal, start the React frontend:
 cd game-frontend
 npm run dev
 ```
+You can access the web browser from the links genrated in the terminal or Open Browser and navigate to access the application: http://localhost:5173
+
+
+6. **Close the Application**
+
+- Logout from the current session.
+- Comeback in VSCode and Press 'Ctrl + C' in both the terminals to stop the system.
+- Undo the changes made in the line 14 in import_games.py file, if you want docker compose to run the application. 
 
 ---
 
-## 🐳 Docker Setup
+## Walkthrough
 
-To run the full application with Docker:
+<img src = "https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.29.52AM.png"/>
 
-```
-docker-compose up --build
-```
 
 
 ## Desciption
@@ -152,5 +229,3 @@ Devang Bhatnagar
 1. GitHub: https://github.com/De-VANG
 2. LinkedIn: https://www.linkedin.com/in/devang-bhatnagar/
 3. Email: devangbhatnagar12@gmail.com
-
-

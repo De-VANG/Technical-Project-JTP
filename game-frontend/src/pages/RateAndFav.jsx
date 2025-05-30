@@ -69,7 +69,7 @@ const RateAndFav = () => {
 
   const handleSubmit = async () => {
     if (!favorite) {
-      setError('Please select a favorite game.');
+      setError('Please select your favorite game.');
       return;
     }
 
@@ -99,7 +99,7 @@ const RateAndFav = () => {
 
       if (!res.ok) {
         const errorData = await res.json();
-        setError(errorData.message || 'Failed to generate recommendations.');
+        setError(errorData.message || 'Failed to generate the recommendations.');
         return;
       }
 

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const phrases = [
-  "Get personalized game recommendations",
-  "Discover games you'll love",
+  "Get your personalized game recommendations",
+  "Discover the games that you'll love",
   "Your next favorite game awaits",
 ];
 
@@ -57,11 +57,11 @@ export default function LandingPage() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-gradient-to-br from-[#1f1c2c] via-[#928dab] to-[#1f1c2c] flex items-center justify-center px-4">
-      {/* Animated background blobs */}
+     
       <div className="absolute w-[60vw] h-[60vw] bg-purple-500 opacity-30 rounded-full top-[-20%] left-[-20%] animate-blob blur-3xl"></div>
       <div className="absolute w-[50vw] h-[50vw] bg-pink-500 opacity-20 rounded-full bottom-[-10%] right-[-15%] animate-blob animation-delay-2000 blur-3xl"></div>
 
-      {/* Glass effect card */}
+      
       <div className="relative z-10 bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-10 text-white shadow-xl text-center max-w-md w-full">
         <h1 className="text-4xl sm:text-5xl text-gray-500 font-extrabold mb-4">
           Welcome to <span className="text-purple-400">🎮 GameMatch</span>
@@ -78,7 +78,7 @@ export default function LandingPage() {
         </Link>
       </div>
 
-      {/* Blob Animation Keyframes */}
+      
       <style>
         {`
           @keyframes blob {

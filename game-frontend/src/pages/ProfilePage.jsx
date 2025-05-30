@@ -28,7 +28,7 @@ const ProfilePage = () => {
         setRecommendations(data.past_recommendations || []);
       } catch (err) {
         console.error(err);
-        alert('Session expired or unauthorized. Please login again.');
+        alert('Session expired or unauthorized. Please try to login again.');
         navigate('/login');
       } finally {
         setLoading(false);

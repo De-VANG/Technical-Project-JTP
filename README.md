@@ -181,7 +181,7 @@ Now, Install the Dependencies.
 pip install -r requirements.txt
 ```
 
-3. **Load Dataset into MongoDB**
+4. **Load Dataset into MongoDB**
 
 Install MongoDB by following each instructions from [here](https://www.mongodb.com/docs/manual/administration/install-community/). <br></br>
 - Open the MongoDB Compass and Connect the Network(You might see network named 'localhost:27017'). 
@@ -205,7 +205,7 @@ cd /Backend
 python import_games.py
 ```
 
-4. **Install Dependencies for Frontend**
+5. **Install Dependencies for Frontend**
 
 Change the directory to the game-frontend folder and then install the dependencies. Make sure you have already installed the [node.js](https://nodejs.org/en/download)
 
@@ -214,7 +214,7 @@ cd /game-frontend
 npm install
 ```
 
-5. **Run the Application**
+6. **Run the Application**
 
 In one terminal, start the Flask backend:
 ```
@@ -229,7 +229,7 @@ npm run dev
 You can access the web browser from the links genrated in the terminal or Open Browser and navigate to access the application: http://localhost:5173
 
 
-6. **Close the Application**
+7. **Close the Application**
 
 - Logout from the current session.
 - Comeback in VSCode and Press 'Ctrl + C' in both the terminals to stop the system.

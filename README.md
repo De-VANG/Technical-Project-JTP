@@ -1,10 +1,25 @@
 <h1 align="center">🎮 Game Recommender Website 🎮</h1>
 
 
-Welcome to GameMatch, a personalized video game recommendation web application that helps you discover games tailored to your unique tastes. Whether you're an experienced gamer or just getting started, our platform uses content based filtering to suggest titles you'll love.A web application that recommends video games based on user preferences. Built with **React**, **Tailwind CSS**, **Flask**, **MongoDB**, and fully containerized using **Docker**.
+Welcome to GameMatch, a personalized video game recommendation web application that helps you discover games tailored to your unique tastes. Whether you're an experienced gamer or just getting started, our platform uses content based filtering to suggest titles you'll love.A web application that recommends video games based on user preferences. Built with **React**, **Tailwind CSS**, **Flask**, **MongoDB**, and fully containerized using **Docker**. Project for recruitment process at JTP Co. LTD.
 
 ---
 
+#  Table of Cotents
+
+
+- [✨ Features](#-features)
+- [🧰 Tech Stack Overview](#-tech-stack-overview)
+- [📝 Description](#-description)
+- [🚀 Getting Started](#-getting-started)
+   - [🐳 With Docker (Recommended)](#-with-docker-recommended)
+   - [⚙️ Without Docker](#️-without-docker)
+- [🧭 Walkthrough](#-walkthrough)
+- [📬 Contact](#-contact)
+
+
+
+---
 ## ✨ Features
 
 - User Sign-Up / Login (JWT Authentication)
@@ -58,6 +73,21 @@ Welcome to GameMatch, a personalized video game recommendation web application t
 
 ---
 
+## 📝 Description
+
+Our video game recommendation website is designed to provide users with personalized game suggestions based on their preferences. 
+
+<img src= "https://postimage.me/images/2025/05/27/untitled.png" />
+
+In the above user flow diagram, The user journey begins on a simple and clean landing page where users can either sign up or log in.
+
+- 🔐 New users are taken to a Game Rating page where they rate a selection of games. These ratings are stored in MongoDB and are used to generate the user's first set of recommendations via a Flask backend.
+- 🏠 Returning users are directed straight to the Home Page, where they are greeted with curated game recommendations based on their previous interactions.
+- 👤 On the Profile Page, users can view their rating history and past recommendations, all visually presented with game posters for a rich and engaging experience.
+- 🧠 All recommendations are powered by a content-based filtering algorithm, ensuring the suggestions are tailored to individual user tastes.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -76,11 +106,14 @@ Make sure you have the following installed on your system:
 - [MongoDB](https://www.mongodb.com/try/download/community)
 
 
+
+### 🛠️ Installation
+
 ---
 
-# 🛠️ Installation
+### 🐳 With Docker (Recommended)
 
-## With Docker 🐳
+---
 
 1. **Clone the Repository**
 
@@ -120,8 +153,9 @@ docker-compose down
 
 ---
 
-## Without Docker
+### ⚙️ Without Docker
 
+---
 1. **Clone the Repository**
 
 ```
@@ -203,26 +237,42 @@ You can access the web browser from the links genrated in the terminal or Open B
 
 ---
 
-## Walkthrough
+## 🧭 Walkthrough
 
+1. After opening the link http://localhost:5173 in the browser, user will be directed to landing page.
 <img src = "https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.29.52AM.png"/>
 
+2. (a) Click on the "Login/Signup" button.
+<p><img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.30.18AM.png" />
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.30.27AM.png"/> </p>
+
+  - (b) Old users can use Login Page and New users can Signup using their unique username and password.
+
+<br>
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.31.53AM.png"/>
+
+3. (a) New Users will be directed towards to RateAndFav Page, here the users can give rating to popular games and they can choose any one game as their favourite. 
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.32.44AM.png"/>
+ 
+  - (b) After selecting Favourite game, the user has to click the submit button to get their very first recommendation. 
 
 
-## Desciption
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.34.23AM.png"/>
 
-Our video game recommendation website is designed to provide users with personalized game suggestions based on their preferences. 
+4. (a) After submitting the Ratings and Favourite Game. The user gets directed to Home Page. The system gives first recommendation on the basis of the user's favourite game.
+  - (b) Old Users when LogIn, they also gets directed towards this page to get recommendations.
 
-<img src= "https://postimage.me/images/2025/05/27/untitled.png" />
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.34.40AM.png"/>
 
-In the above user flow diagram, The user journey begins on a simple and clean landing page where users can either sign up or log in.
+5. After selecting the New Game click "Get Recommendations" and the system will recommend the similar games.
 
-- 🔐 New users are taken to a Game Rating page where they rate a selection of games. These ratings are stored in MongoDB and are used to generate the user's first set of recommendations via a Flask backend.
-- 🏠 Returning users are directed straight to the Home Page, where they are greeted with curated game recommendations based on their previous interactions.
-- 👤 On the Profile Page, users can view their rating history and past recommendations, all visually presented with game posters for a rich and engaging experience.
-- 🧠 All recommendations are powered by a content-based filtering algorithm, ensuring the suggestions are tailored to individual user tastes.
+<img src ="https://postimage.me/images/2025/05/30/Screenshot-2025-05-30-at-5.36.06AM.png"/>
 
+6. This is the Profile Page, where the user can see their past recommendations and ratings. 
+<br>
+</br>
 ---
+
 ## 📬 Contact
 
 Devang Bhatnagar
